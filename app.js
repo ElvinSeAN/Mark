@@ -3,7 +3,7 @@ var SQL = require('sql.js');
 var path = require('path');
 var filebuffer = fs.readFileSync(path.join(__dirname, 'testDB.db'));
 const express = require('express');
-const app = express()
+const app = express();
 
 function Result(id, first, second, third, fourth, fifth, sixth, seventh) {
     this.id = id;
@@ -37,6 +37,6 @@ var rest = db.exec("SELECT `_rowid_`, * FROM record where sixth < 25");
 for (var i = 0; i < rest[0].values.length; i++) {
     allResult[i] = new Result(rest[0].values[i][0], rest[0].values[i][1], rest[0].values[i][2], rest[0].values[i][3], rest[0].values[i][4], rest[0].values[i][5], rest[0].values[i][6], rest[0].values[i][7]);
     console.log(allResult[i]);
-
 }
+
 db.close();
