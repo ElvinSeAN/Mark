@@ -1,5 +1,3 @@
-var msg = 'Hello World';
-console.log(msg);
 var fs = require('fs');
 var SQL = require('sql.js');
 var path = require('path');
@@ -23,6 +21,14 @@ module.exports = Result;
 app.get('/', function (req, res) {
     res.send('Hello World!')
 })
+
+app.get('/db', function (req, res) {
+    res.send(JSON.stringify(allResult));
+})
+
+app.listen(3000, function () {
+    console.log('listening to port 3000 ready to go !')
+})
 var allResult = [new Result()];
 
 // Load the db
@@ -33,15 +39,4 @@ for (var i = 0; i < rest[0].values.length; i++) {
     console.log(allResult[i]);
 
 }
-
-
-
 db.close();
-
-app.get('/db', function (req, res) {
-    res.send(JSON.stringify(allResult));
-})
-
-app.listen(3000, function () {
-    console.log('example working !')
-})
